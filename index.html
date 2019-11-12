@@ -32,8 +32,13 @@
       https://www.d3indepth.com/geographic/
       https://medium.com/@andybarefoot/making-a-map-using-d3-js-8aa3637304ee
       */
-      d3.json("Data/custom.geo.json", function(error, topology) {
-          //what has to go in here??
+      d3.json("https://raw.githubusercontent.com/cszang/dendrobox/master/data/world-110m2.json", function(error, topology) {
+        g.selectAll("path")
+            .data(topojson.object(topology, topology.objects.countries)
+                .geometries)
+          .enter()
+            .append("path")
+            .attr("d", path)
       });
     </script>
   </body>
